@@ -58,7 +58,7 @@ class PathWaySearchProblem(problem_solution.SearchProblem):
     def isGoal(self, state):
         return self.goal == state
     
-    def heuristic(self,state:tuple[int,int]):
+    def heuristic(self,state):
         #Distance Manhattan |x1-x2|+|y1-y2|
         h = (math.fabs(state[0] - self.goal[0])) + (math.fabs(state[1]-self.goal[1]))
         return h
@@ -99,7 +99,7 @@ for i in range(1,6):
     #route (go to goal)
     i = 0
     for route in list_actions:
-        route: tuple[int,int] = list_actions[i][1]
+        route = list_actions[i][1]
         routes.append(route)
         i += 1
     
@@ -107,24 +107,6 @@ for i in range(1,6):
     ulity.visualize_maze(problem.matrix,problem.bonus_points,problem.init,problem.goal,routes)
 
 
-# # #heuristic 2
 
 
-# #heuristic 3
-# print("#heuristic 3 :")
-# sovler2.setHeuristic(3)
-# sovler2.solve(problem,1)
-# newmap3 = Map("map.bmp")
-# for action, reached_state in sovler2.actions:
-#     newmap3.set(reached_state,255)
-# cv.imwrite("map3.bmp", newmap3.data)
-# problem.cleanScreen()
-# #UCS
-# print("#UCS algo :")
-# sovler3_UCS = problem_solution.UniformSolution()
-# sovler3_UCS.solve(problem, 1)
-# newmap3= Map("map.bmp")
-# for action, reached_state in sovler3_UCS.actions:
-#     newmap3.set(reached_state,255)
-# cv.imwrite("map3_optimal.bmp", newmap3.data)
-# #END SESION
+
