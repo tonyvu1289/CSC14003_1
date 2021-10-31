@@ -69,7 +69,7 @@ class PathWaySearchProblem(problem_solution.SearchProblem):
             if self.matrix[newstate[0]][newstate[1]] == 'x':
                 continue
             #Cost to move 1 step is 1
-            addcost = 1
+            addcost = 2
             ans.append((action,newstate,addcost))
         return ans
 
