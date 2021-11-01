@@ -1,0 +1,22 @@
+class Solution:
+    def __init__(self):
+        raise NotImplementedError("No __init__() implementation yet!")
+
+    def solve(self, problem : SearchProblem, display=0):
+        raise NotImplementedError("No solve() implementation yet!")
+
+class SearchProblem:
+
+    def __init__(self):
+        raise NotImplementedError("No __init__ yet!")
+
+    def initState(self): 
+        raise NotImplementedError("No initState() implementation yet!")
+
+    def isGoal(self, state): 
+        raise NotImplementedError("No isGoal() implementation yet!")
+
+    def expandSuccessor(self, state): 
+        raise NotImplementedError("No expandSuccessor implementation yet!")
+
+    def display_explored(self, state): pass

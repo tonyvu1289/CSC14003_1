@@ -1,0 +1,25 @@
+class PriorityQueue:
+    def __init__(self) -> None:
+        # priority is a "element to priority value of that element" dictionary
+        self.heap = []
+        self.priority = {}
+        self.DONE = -10000000
+
+    def isEmpty(self):
+        return len(self.priority) == 0
+
+    def add_update(self, element, priorityValue):
+        if element in self.priority:  #
+            if self.priority[element] <= priorityValue:
+                return 0  # not success
+        self.priority[element] = priorityValue
+        heapq.heappush(self.heap, (priorityValue, element))
+        return 1  # success
+
+    def pop_delete(self):
+        while len(self.heap) > 0:
+            priority, state = heapq.heappop(self.heap)
+            if self.priority[state] == self.DONE: continue  # Outdated priority, skip
+            self.priority[state] = self.DONE
+            return state, priority
+        return (None, None)  # Nothing left...
