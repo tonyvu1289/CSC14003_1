@@ -88,9 +88,9 @@ for i in range(1,6):
 
     #solve problem
     problem = PathWaySearchProblem(str(map_name+map_id+map_extesion))
-    solvers = [problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
+    solvers = [problem_solution.DFSSolution(),problem_solution.BFSSolution(),problem_solution.GreedyBestFirstSearchSolution(),problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
     for solver in solvers:
-        solver.solve(problem)
+        solver.solve(problem,2)
         list_actions = solver.actions
         routes = []
 
