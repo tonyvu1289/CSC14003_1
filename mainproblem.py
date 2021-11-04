@@ -88,23 +88,24 @@ for i in range(1,6):
 
     #solve problem
     problem = PathWaySearchProblem(str(map_name+map_id+map_extesion))
-    sovler1 = problem_solution.A_StarSolution()
-    sovler1.solve(problem)
-    list_actions = sovler1.actions
-    routes = []
+    solvers = [problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
+    for solver in solvers:
+        solver.solve(problem)
+        list_actions = solver.actions
+        routes = []
 
-    #init State
-    routes.append(problem.init)
+        #init State
+        routes.append(problem.init)
 
-    #route (go to goal)
-    i = 0
-    for route in list_actions:
-        route = list_actions[i][1]
-        routes.append(route)
-        i += 1
-    
-    #Visualize map
-    ulity.visualize_maze(problem.matrix,problem.bonus_points,problem.init,problem.goal,routes)
+        #route (go to goal)
+        i = 0
+        for route in list_actions:
+            route = list_actions[i][1]
+            routes.append(route)
+            i += 1
+        
+        #Visualize map
+        ulity.visualize_maze(problem.matrix,problem.bonus_points,problem.init,problem.goal,routes)
 
 
 
