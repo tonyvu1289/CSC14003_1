@@ -6,7 +6,6 @@ class Solution:
         raise NotImplementedError("No solve() implementation yet!")
 
 class SearchProblem:
-
     def __init__(self):
         raise NotImplementedError("No __init__ yet!")
 

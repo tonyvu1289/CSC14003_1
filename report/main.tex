@@ -15,7 +15,7 @@
 	\vspace{12pt} % Whitespace
 }
 
-\author{\LARGE 19120212- Vũ Công Duy \\ \LARGE 19120399 - Tô Gia Thuận}
+\author{\LARGE 19120212- Vũ Công Duy \\ \LARGE 19120389 - Tô Gia Thuận}
 \date{\normalsize\today} % Today's date (\today) or a custom date
 \begin{document}
 \maketitle 
@@ -25,12 +25,46 @@
 \end{figure}
 
 %------------------------------------------------
+\newpage
+\section{Mô tả đồ án}
+\subsection{Dẫn nhập}
+Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc nào đó, điều đó cũng rất đúng khi áp dụng trong việc tìm kiếm đường đi. Làm thế nào để có thể lựa chọn đường đi ngắn nhất, ít vật cản nhất khi đi từ điểm A đến điểm B. Nhưng cũng có lúc cũng chỉ quan tâm đến cách để đi từ điểm A đến B sao cho chi phí thấp nhất mà không cần quan tâm đến độ dài đường đi. Từ đó những vấn đề thực tiễn đó, chúng ta đưa ra khải niệm về bài toán tìm đường đi trong một không gian ma trận MxN.
+\subsection{Yêu cầu đồ án}
+ Áp dụng các thuật toán tìm kiếm không có thông tin và có thông tin để tìm đường đi thoát khỏi mê cung. 
+\\- Kí hiệu \textbf{Ngôi sao} trong mê cung đánh dấu điểm bắt đầu của vật thể. 
+\\- Kí hiệu \textbf{X} biểu diễn các bức tường chắn của mê cung.
+\\- Kí hiệu \textbf{EXIT} đánh dấu lối thoát của mê cung
+\\Yêu cầu đồ án: Áp dụng 4 thuật toán DFS, BFS, GBFS, A* để tìm đường đi thoát khỏi mê cung đồng thời đi qua các các điểm thưởng.
+\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+	\centering
+	\includegraphics[width=0.5\columnwidth]{demo_maze.png} % Example image
+\end{figure}
+
+\section{Cơ sở lý thuyết}
+\subsection{Không gian trạng thái}
+Xét mê cung trong bài toán nằm trên một hệ trục tọa độ hai chiều Oxy. Gọi \textbf{x} và \textbf{y} lần lượt là hoành độ và tung độ của tác nhân.\\
+- Trạng thái của tác nhân: Tọa độ (x,y) trên ma trận.\\
+- Trạng thái bắt đầu (start state): Tọa đô ($x^{'}$,$y^{'}$) của kí hiệu \textbf{Ngôi sao} trên ma trận.\\
+- Trạng thái kết thúc (goal state): Tọa độ ($x^{''}$,$y^{''}$) của kí hiệu \textbf{EXIT} trên ma trận.\\
+- Hành động của tác nhân: Di chuyển lên trên, xuống dưới, qua trái, qua phải.\\
+- Hàm kế nhiệm, kế thừa (successor function): ExpandSuccessor - dùng để lựa chọn ô kế nhiệm ô cũ và cập nhật lại vị trí hiện tại của tác nhân.\\
+- Hàm kiểm tra kết thúc: isGoal - kiểm tra trạng thái tác nhân đang xét (x,y) có phải là ô kết thúc (lối ra của mê cung) hay không.
+\subsection{Xây dựng cấu trúc bài toán}
+Để cái đặt các thuật toán tìm kiếm trên ma trận có kích thước MxN, ta cần xây dựng một danh sách các điểm kề với điểm tại vị trí đang xét và chi phí phát sinh giữa điểm đang xét và các cạnh kề của nó.\\
+
+Gọi ô (vị trí) của tác nhân tại một điểm nhất định là (x,y) trong ma trận, ứng với các hướng di chuyển lên, xuống, trái, phải, ta sẽ có các ô kề với tọa độ lần lượt là (x,y-1), (x,y+1), (x-1,y), (x+1,y). Do các ô có kích thước là như nhau nên chi phí di chuyển tới các ô kề sẽ là như nhau và trong đồ án này sẽ được đặt mặc định là 1.\\
+
+Bằng cách phát sinh các ô kề của ô mà tác nhân đang đứng, ta sẽ có thể xây dựng danh sách các ô kề và chi phí. Khi cần lấy danh sách các ô kề và chi phí của ô hiện tại mà tác nhân đang đứng (x,y), ta phát sinh ra tọa độ ô kề thứ i của u bằng công thức (x+$dx_{i}$, y+$dy_{i}$) và chi phí tương ứng là $w_{i}$ , $\forall{i\ge0}\cup{i\le4}$\\
+
+Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đang đứng, ta sẽ cài đặt hàm kế nhiệm để tính toán xem các ô kề có phải là bức tường chắn hay không đồng thời tính toán chi phí, và dựa trên kết quả đó để trả về những ô phù hợp có thể kế nhiệm ô hiện tại.
 \section{Xây dựng cấu trúc chương trình} \cite{standfordcs221}
 Mục tiêu của việc xây dựng cấu trúc chương trình là để việc cài đặt những thuật toán được tổng quát hóa, giúp cài đặt những bài toán khác nhau và giải chúng bằng nhiều thuật toán khác nhau trở nên đơn giản hơn. 
 
 Theo cách những nhà phát triển phần mềm, mã nguồn có thể được tái sử dụng trong nhiều trường hợp khác nhau, giúp người lập trình có thể tập trung hơn vào phần tối ưu thuật toán mà không nghĩ ngợi nhiều về phần kỹ thuật, cài đặt.
 
 Việc cài đặt dựa chủ yếu vào kỹ thuật kế thừa, đa hình trong kỹ thuật lập trình hướng đối tượng. Chương trình sẽ được trực quan hóa bằng biểu đồ UML sau đây.
+
+\newpage
 \begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
 	\centering
 	\includegraphics[width=1.2\columnwidth]{classes_uml_diagram.png} % Example image
@@ -109,18 +143,18 @@ Quy trình thực hiện thuật toán được thực hiện như sau:
 
 \subsubsection{DepthFirstSearch}
 
-Thực hiện giống BFS nhưng \code{frontier} là một stack thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm pop và push.
+Thực hiện giống BFS nhưng code{frontier} là một stack thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm pop và push.
 
 \subsubsection{A*}
-Thực hiện giống BFS nhưng \code{frontier} là một priorityqueue(class đã được giải thích ở trên) thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm add_update và pop_delete.
+Thực hiện giống BFS nhưng code{frontier} là một priorityqueue(class đã được giải thích ở trên) thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm add\_update và pop\_delete.
 
 Phần addupdate element : thay vì add (state,cost), ta add (state,cost + h(x)).
 
 Thay vì dựa vào backPointer để loại successor, ta dựa vào hashtable cost.
 
-Ngoài ra, khi add_update element thành công thì mới bổ sung hastable cost và backPointer.
+Ngoài ra, khi add\_update element thành công thì mới bổ sung hastable cost và backPointer.
 
-Phần add_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
+Phần add\_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
 
 \subsubsection{BestFirstSearch}
 Thực hiện giống A*.
