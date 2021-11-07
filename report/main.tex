@@ -76,10 +76,56 @@ Thuộc tính \textbf{heap} là một list các tuple (element, value).Việc s�
 
 Thuộc tính \textbf{priority} là một dict lưu trữ các element đã được thêm vào heap (kể cả các element đã được pop khỏi heap) và value của mỗi element đó. Những element nào đã được pop ra sẽ được gán value bằng với thuộc tính \textbf{DONE} mang giá trị $- \infty$ để phân biệt với các giá trị khác, thuận tiện cho việc viết điều kiện rẽ nhánh cho chương trình bỏ qua update hoặc thêm vào heap nếu đã được pop.
 \subsection{Các class kế thừa abstract class}
+Phần này sẽ giải thích các class kế thừa abstract tức những thuật toán cụ thể
+\subsubsection{BreadFirstSearch}
+Đầu tiên ta khởi tạo những biến sau đây:  
 
+- totalCost : lưu trữ tổng chi phí đường đi  
 
+- toltaExpand : lưu trữ tổng số node mở rộng  
 
+- action : dãy các action thực hiện để biến initState thành goalState  
+
+- backPointer : là hashtable với key là trạng thái và value là các cặp (state,backPointer) với backPointer là trạng thái phía trước.  
+
+- frontier : là một hàng đợi. Sẽ lưu các cặp (state,cost) sẽ được visit.  
+
+Ta sẽ khởi tạo frontier chứa initState. Các biến khác khởi tạo bằng 0 hoặc rỗng.  
+
+Quy trình thực hiện thuật toán được thực hiện như sau:
+- Dequeue frontier, sẽ được một cặp state và chi phí để đi đến state đó.
+
+- Tăng totalExpand lên 1 đơn vị.  
+
+- Kiểm tra trạng thái vừa pop ra có phải là trạng thái đích chưa. Nếu đúng thì dựa vào backPointer và cost để hoàn thành list action và thoát khỏi hàm.  
+
+- Nếu chạy hàm expand() để lấy những successor và chi phí cần thêm để đi tới chúng. Nếu successor đó có trong backPointer thì bỏ qua.
+
+- enqueue những trạng thái mới và cost của chúng.
+
+- Cập nhật backPointer của từng trạng thái mới chính là trạng thái vừa pop ở trên.
+
+- Lặp đến khi nào frontier hết phân tử.
+
+\subsubsection{DepthFirstSearch}
+
+Thực hiện giống BFS nhưng \code{frontier} là một stack thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm pop và push.
+
+\subsubsection{A*}
+Thực hiện giống BFS nhưng \code{frontier} là một priorityqueue(class đã được giải thích ở trên) thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm add_update và pop_delete.
+
+Phần addupdate element : thay vì add (state,cost), ta add (state,cost + h(x)).
+
+Thay vì dựa vào backPointer để loại successor, ta dựa vào hashtable cost.
+
+Ngoài ra, khi add_update element thành công thì mới bổ sung hastable cost và backPointer.
+
+Phần add_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
+
+\subsubsection{BestFirstSearch}
+Thực hiện giống A*.
+Thay vì
 
 \bibliographystyle{plain}
 \bibliography{ref}
-\end{d ocument}
+\end{document}

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.10.18)  31 OCT 2021 16:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.10.18)  7 NOV 2021 22:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/main.tex"
-(/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/main.tex
+**"/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex"
+(/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03> (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2020/09/21 v3.32 KOMA-Script document class (article)
@@ -188,7 +188,7 @@ Package tocbasic Info: babel extension for `lot' omitted
 \c@table=\count185
 Class scrartcl Info: Redefining `\numberline' on input line 6252.
 \bibindent=\dimen138
-) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/structure.tex (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/structure.tex (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip63
 
@@ -570,7 +570,11 @@ Package scrlayer-scrpage Info: deactivating warning for font element
 (scrlayer-scrpage)             `pagefoot' on input line 1109.
 )
 Package scrlayer-scrpage Info: auto-selection of `pagestyleset=KOMA-Script'.
-) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/main.aux)
+) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.aux
+
+LaTeX Warning: Label `lst:luftballons' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -663,10 +667,6 @@ File: Figures//hcmus.png Graphic file (type png)
 <use Figures//hcmus.png>
 Package pdftex.def Info: Figures//hcmus.png  used on input line 24.
 (pdftex.def)             Requested size: 170.71393pt x 170.69577pt.
-
-
-LaTeX Warning: Citation `standfordcs221' on page 1 undefined on input line 28.
-
 <classes_uml_diagram.png, id=2, 1151.30125pt x 812.03375pt>
 File: classes_uml_diagram.png Graphic file (type png)
 <use classes_uml_diagram.png>
@@ -683,9 +683,9 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/Figures//hcmus.png (PNG copy)>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//hcmus.png (PNG copy)>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/abstract_class.txt
+) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/abstract_class.txt
 Overfull \hbox (33.00021pt too wide) in paragraph at lines 3--5
 [][][][][][][][][][][][][][][][][][][][] 
  []
@@ -695,7 +695,7 @@ Overfull \hbox (13.29486pt too wide) in paragraph at lines 6--8
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[2 </media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/classes_uml_diagram.png>]
+[2 </media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/classes_uml_diagram.png>]
 Overfull \hbox (39.56866pt too wide) in paragraph at lines 14--16
 [][][][][][][][][][][][][][][][][][][][] 
  []
@@ -710,11 +710,7 @@ Overfull \hbox (65.84247pt too wide) in paragraph at lines 20--22
 [][][][][][][][][][][][][][][][][][][] 
  []
 
-)
-
-LaTeX Warning: Citation `csttnt_lhb' on page 3 undefined on input line 57.
-
-(/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/priority_queue.txt
+) (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/priority_queue.txt
 Overfull \hbox (85.54782pt too wide) in paragraph at lines 3--4
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -725,40 +721,148 @@ Overfull \hbox (131.52698pt too wide) in paragraph at lines 22--23
  []
 
 )
-No file main.bbl.
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:112: Undefined control sequence.
+l.112 Thực hiện giống BFS nhưng \code
+                                            {frontier} là một stack thay ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/main.tex:85: LaTeX Error: \begin{document} ended by \end{d ocument}.
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:115: Undefined control sequence.
+l.115 Thực hiện giống BFS nhưng \code
+                                            {frontier} là một priorityque...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.85 \end{d ocument}
-                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:115: Missing $ inserted.
+<inserted text> 
+                $
+l.115 ... và enequeue thay thế bằng hàm add_
+                                                  update và pop_delete.
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
-/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/project 1/report/main.tex:85: Extra \endgroup.
-<recently read> \endgroup 
-                          
-l.85 \end{d ocument}
-                    
-Things are pretty mixed up, but I think the worst is over.
 
-)
-! Emergency stop.
-<*> ... HK1 nam 3/cs_AI/project 1/report/main.tex"
-                                                  
-*** (job aborted, no legal \end found)
+LaTeX Warning: Command \` invalid in math mode on input line 115.
 
- 
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:116: Missing $ inserted.
+<inserted text> 
+                $
+l.116 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no � in font cmr10!
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:117: Missing $ inserted.
+<inserted text> 
+                $
+l.117 Phần add_
+                 update element : thay vì add (state,cost), ta add (state,c...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 117.
+
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:118: Missing $ inserted.
+<inserted text> 
+                $
+l.118 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no � in font cmr10!
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:121: Missing $ inserted.
+<inserted text> 
+                $
+l.121 Ngoài ra, khi add_
+                         update element thành công thì mới bổ sung ha...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 121.
+
+
+LaTeX Warning: Command \^ invalid in math mode on input line 121.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 121.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 121.
+
+
+LaTeX Warning: Command \h invalid in math mode on input line 121.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 121.
+
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:122: Missing $ inserted.
+<inserted text> 
+                $
+l.122 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+Missing character: There is no � in font cmr10!
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:123: Missing $ inserted.
+<inserted text> 
+                $
+l.123 Phần add_
+                 update element : thay vì add (state,cost + h(x)), ta add (...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+LaTeX Warning: Command \` invalid in math mode on input line 123.
+
+/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.tex:124: Missing $ inserted.
+<inserted text> 
+                $
+l.124 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no � in font cmr10!
+[4] (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.bbl) [5] (/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 11006 strings out of 479304
- 210409 string characters out of 5869778
- 887659 words of memory out of 5000000
- 28055 multiletter control sequences out of 15000+600000
+ 11027 strings out of 479304
+ 211341 string characters out of 5869778
+ 887669 words of memory out of 5000000
+ 28072 multiletter control sequences out of 15000+600000
  424224 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 111i,20n,116p,10759b,2199s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 111i,20n,116p,10760b,2199s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vncsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/vntex/vnr/vnti10.pfb>
+Output written on "/media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.pdf" (5 pages, 273656 bytes).
+PDF statistics:
+ 73 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
+
+ 73 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+
