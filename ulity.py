@@ -1,7 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 
-def visualize_maze(matrix, bonus, start, end, route=None):
+def visualize_maze(matrix, aglo_name, ordinal_nums, bonus, start, end, route = None):
     """
     Args:
       1. matrix: The matrix read from the input file,
@@ -27,7 +27,13 @@ def visualize_maze(matrix, bonus, start, end, route=None):
         direction.pop(0)
 
     #2. Drawing the map
-    ax=plt.figure(dpi=100).add_subplot(111)
+    ax=plt.figure(num = "Figure %d"% ordinal_nums, dpi=100).add_subplot(111)
+    aglo_name = str(aglo_name)
+    index = aglo_name.find('.')
+    aglo_name = aglo_name[index+1:]
+    index = aglo_name.find("'")
+    aglo_name = aglo_name[:index]
+    ax.set_title(aglo_name)
 
     for i in ['top','bottom','right','left']:
         ax.spines[i].set_visible(False)

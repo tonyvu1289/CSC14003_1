@@ -76,8 +76,8 @@ class PathWaySearchProblem(problem_solution.SearchProblem):
 
 
 #DEBUG SESSION : test class PathWaySearchProblem
-#Aglo Astar
-# 5 maps without bouns points
+
+#5 maps without bouns points
 for i in range(1,6):
     map_name = 'maze_map'
     map_id = str(i)
@@ -90,6 +90,9 @@ for i in range(1,6):
     problem = PathWaySearchProblem(str(map_name+map_id+map_extesion))
     solvers = [problem_solution.DFSSolution(),problem_solution.BFSSolution(),problem_solution.GreedyBestFirstSearchSolution(),problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
     for solver in solvers:
+        #get aglorithm name
+
+        
         solver.solve(problem,2)
         list_actions = solver.actions
         routes = []
@@ -98,14 +101,15 @@ for i in range(1,6):
         routes.append(problem.init)
 
         #route (go to goal)
-        i = 0
+        k = 0
         for route in list_actions:
-            route = list_actions[i][1]
+            route = list_actions[k][1]
             routes.append(route)
-            i += 1
+            k += 1
         
         #Visualize map
-        ulity.visualize_maze(problem.matrix,problem.bonus_points,problem.init,problem.goal,routes)
+        ulity.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes)
+
 
 
 
