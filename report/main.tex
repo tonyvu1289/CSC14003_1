@@ -146,6 +146,8 @@ Quy trình thực hiện thuật toán được thực hiện như sau:
 Thực hiện giống BFS nhưng code{frontier} là một stack thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm pop và push.
 
 \subsubsection{A*}
+Khởi tạo thêm hashtable cost với key là trạng thái, value là chi phí để đi đến trạng thái đó từ trạng thái ban đầu.
+
 Thực hiện giống BFS nhưng code{frontier} là một priorityqueue(class đã được giải thích ở trên) thay vì queue. Hàm dequeue và enequeue thay thế bằng hàm add\_update và pop\_delete.
 
 Phần addupdate element : thay vì add (state,cost), ta add (state,cost + h(x)).
@@ -154,11 +156,13 @@ Thay vì dựa vào backPointer để loại successor, ta dựa vào hashtable 
 
 Ngoài ra, khi add\_update element thành công thì mới bổ sung hastable cost và backPointer.
 
-Phần add\_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
+
 
 \subsubsection{BestFirstSearch}
 Thực hiện giống A*.
-Thay vì
+
+Phần add\_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
+
 
 \bibliographystyle{plain}
 \bibliography{ref}
