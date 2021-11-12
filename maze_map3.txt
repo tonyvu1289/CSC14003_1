@@ -1,6 +1,6 @@
 2
 1 1 -4
-6 4 -2
+6 4 -5
 xxxxxxxxxxxxxxxxxxxxxx
 x+  x    x xxx        
 x     xx       xxxxxxx

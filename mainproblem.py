@@ -53,7 +53,10 @@ class Map:
         return ans
 
 class PathWaySearchProblem(problem_solution.SearchProblem):
+    def display_explored(self, state):
+        self.explored.append(state)
     def __init__(self, input_pathway):
+        self.explored = []
         self.count_show = 0
         # input is a array contain all data number
         self.bonus_points, self.matrix = utility.read_file(input_pathway)
@@ -210,7 +213,7 @@ if x == 1:
             solver.solve(problem,2)
             list_actions = solver.actions
             routes = []
-
+            print(problem.explored)
             #init State
             routes.append(problem.init)
 
