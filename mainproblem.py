@@ -91,10 +91,11 @@ class PathWaySearchProblem(problem_solution.SearchProblem):
             ans.append((action,newstate,addcost))
         return ans
 
-class PathWaySearchBounsPoint(problem_solution.SearchProblem):
+class PathWaySearch_mattrix(problem_solution.SearchProblem):
     def __init__(self, matrix, start_point, end_point):
         # input is a array contain all data number
         self.map = Map()
+        self.matrix = matrix
         # assign data to init state and goal state
         self.init = start_point
         self.goal = end_point
@@ -118,51 +119,60 @@ class PathWaySearchBounsPoint(problem_solution.SearchProblem):
     def expandSuccessor(self, state):
         ans = []
         for action, newstate in self.map.all_move(state):
-            if matrix[newstate[0]][newstate[1]] == 'x':
+            if self.matrix[newstate[0]][newstate[1]] == 'x':
                 continue
             #Cost to move 1 step is 1
             addcost = 1
             ans.append((action,newstate,addcost))
         return ans
 
-class SelectBonusPoint(problem_solution.SearchProblem):
-    def __init__(self, bonus_points, matrix):
+class PathWaySearchBonusPoint(problem_solution.SearchProblem):
+    '''state is a tuple of point which have already been visited
+    last elemnet in list is current position
+    '''
+    def __init__(self,input_pathway):
+        # input is a array contain all data number
+        self.bonus_points, self.matrix = utility.read_file(input_pathway)
         self.map = Map()
         # assign data to init state and goal state
-        for i in range(len(matrix)):
-            for j in range(len(matrix[0])):
-                if matrix[i][j] == 'S':
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[0])):
+                if self.matrix[i][j] == 'S':
                     self.init = (i,j)
-                elif matrix[i][j]==' ':
-                    if (i==0) or (i==len(matrix)-1) or (j==0) or (j==len(matrix[0])-1):
+                elif self.matrix[i][j]==' ':
+                    if (i==0) or (i==len(self.matrix)-1) or (j==0) or (j==len(self.matrix[0])-1):
                         self.goal = (i,j)
                 else:
                     pass
-        self.list_points = bonus_points
-    #check is at init state
+        self.bonus_points = [x[0:2] for x in self.bonus_points]
+    #return init state
     def initState(self):
-        return self.init
+        return (self.init,) #tuple
 
     #check is at goal state
     def isGoal(self, state):
-        return self.goal == state
-
-    def getInitSate(self):
-        return self.init
-
-    def getGoalState(self):
-        return self.goal
-
-    def heuristic(self,state):
-        #Distance Manhattan |x1-x2|+|y1-y2|
-        h = (math.fabs(state[0] - self.goal[0])) + (math.fabs(state[1]-self.goal[1]))
-        return h
-       
+        return len(state) == len(self.bonus_points)+2
     def expandSuccessor(self, state):
+        '''
+        return list of (action,newstate,addcost)
+        action is a list of action to reach new point from last point in state
+        new state = oldstate append new pos
+        '''
         ans = []
-        for action, newstate, reward in self.map.all_bonus_point(state,self.list_points,self.goal):
-            addcost = reward
-            ans.append((action,newstate,addcost))
+        new_states = []
+        for x in self.bonus_points :
+            if(x not in state):
+                new_state = state + (x,)
+                new_states.append(new_state)
+        if(len(new_states)==0): #if all of bonus point have been passed
+            new_state = state + (self.goal,)
+            #the last point we gonna pass is goal
+            new_states.append(new_state)
+        solver = problem_solution.A_StarSolution()
+        for new_state in new_states:
+            problem = PathWaySearch_mattrix(self.matrix,new_state[-2],new_state[-1])
+            solver.solve(problem)
+            ans.append((solver.actions,new_state,solver.totalCost))
         return ans
 
 
@@ -208,63 +218,39 @@ if x == 1:
  #5 maps with bonus points
 elif x == 2:
    
-    for s in range(1,6):
+    for i in range(1,6):
         map_name = 'maze_map'
-        map_id = str(s)
+        map_id = str(i)
         map_extesion = '.txt'
 
         #print id map
         print(' '.join(['Maze Map',map_id]))
 
-        #solve problem child (find many suitable bonus points)
-        input_pathway = str(map_name+map_id+map_extesion)
-        bonus_points, matrix = utility.read_file(input_pathway)
-        
-        problem_child = SelectBonusPoint(bonus_points,matrix)
-        solver = problem_solution.A_StarSolution()
-        solver.solve(problem_child,2)
+        #solve problem
+        problem = PathWaySearchBonusPoint(str(map_name+map_id+map_extesion))
+        solvers = [problem_solution.UniformSolution()]
+        for solver in solvers:
+            #get aglorithm name
+            solver.solve(problem,2)
+            list_actions = solver.actions
+            routes = []
 
-        #Get init and goal state
-        initPoint = problem_child.getInitSate()
-        goalPoint = problem_child.getGoalState()
+            #init State
+            routes.append(problem.init)
 
-        temp_list = solver.actions
-        routes=[]
-
-        #add init state
-        routes.append(initPoint)
-        list_actions_points = []
-        k = 0
-        for action in temp_list:
-            action = temp_list[k][1]
-            list_actions_points.append(action)
-            k += 1
-        
-        #solve proble parent (find the path among two points)
-        solver_parents = [problem_solution.DFSSolution(),problem_solution.BFSSolution(),problem_solution.GreedyBestFirstSearchSolution(),problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
-        for solver_parent in solver_parents:
-            for i in range(len(list_actions_points)):
-                if i == 0:
-                    problem_parent = PathWaySearchBounsPoint(matrix,initPoint,list_actions_points[i])
-                    solver_parent.solve(problem_parent,2)
-                    list_actions_parents = solver_parent.actions
-                    k = 0
-                    for route in list_actions_parents:
-                        route = list_actions_parents[k][1]
-                        routes.append(route)
-                        k += 1
-
-                else:
-                    problem_parent = PathWaySearchBounsPoint(matrix,list_actions_points[i-1],list_actions_points[i])
-                    solver_parent.solve(problem_parent,2)
-                    list_actions_parents = solver_parent.actions
-                    k = 0
-                    for route in list_actions_parents:
-                        route = list_actions_parents[k][1]
-                        routes.append(route)
-                        k += 1
-            utility.visualize_maze(matrix,type(solver_parent),s,bonus_points,initPoint,goalPoint,routes)
-
+            #route (go to goal)
+            k = 0
+            for actions_parrent in list_actions:
+                for action in actions_parrent[0]:
+                    route = action[1]
+                    routes.append(route)
+                # route = list_actions[k][1]
+                # routes.append(route)
+                # k += 1
+            
+            #Visualize map
+            utility.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes)
+ 
 
 
 

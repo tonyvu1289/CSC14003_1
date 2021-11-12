@@ -63,7 +63,7 @@ def visualize_maze(matrix, aglo_name, ordinal_nums, bonus, start, end, route = N
     print(f'Ending point (x, y) = {end[0], end[1]}')
     
     for _, point in enumerate(bonus):
-      print(f'Bonus point at position (x, y) = {point[0], point[1]} with point {point[2]}')
+      print(f'Bonus point at position (x, y) = {point[0], point[1]}')
     print('\n')
 
 def read_file(file_name):

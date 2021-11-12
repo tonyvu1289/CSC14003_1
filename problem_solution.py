@@ -42,7 +42,6 @@ class SearchProblem:
 
     def display_explored(self, state): pass
 
-
 class Solution:
     """class trừu tượng cho những chiến lược tìm kiếm"""
 
@@ -132,7 +131,7 @@ class UniformSolution(Solution):
             if problem.isGoal(parentState):
                 state = parentState
                 self.totalCost = parentCost
-                while state is not problem.initState():
+                while state != problem.initState():
                     act, par = self.backPointer[state]
                     self.actions.append((act, state))
                     state = par
