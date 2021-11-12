@@ -1,7 +1,7 @@
 def create_maps():
   with open('maze_map1.txt', 'w') as outfile:
     outfile.write('2\n')
-    outfile.write('3 6 -3\n')
+    outfile.write('3 6 -11\n')
     outfile.write('5 14 -1\n')
     outfile.write('xxxxxxxxxxxxxxxxxxxxxx\n')
     outfile.write('x   x   xx xx        x\n')

@@ -92,10 +92,12 @@ class PathWaySearchProblem(problem_solution.SearchProblem):
         return ans
 
 class PathWaySearch_mattrix(problem_solution.SearchProblem):
-    def __init__(self, matrix, start_point, end_point):
+    def __init__(self, matrix, start_point, end_point,reward):
         # input is a array contain all data number
         self.map = Map()
         self.matrix = matrix
+        
+        self.reward = reward
         # assign data to init state and goal state
         self.init = start_point
         self.goal = end_point
@@ -107,9 +109,6 @@ class PathWaySearch_mattrix(problem_solution.SearchProblem):
     #check is at goal state
     def isGoal(self, state):
         return self.goal == state
-
-    def get_reward(self):
-        return self.reward
 
     def heuristic(self,state):
         #Distance Manhattan |x1-x2|+|y1-y2|
@@ -123,6 +122,8 @@ class PathWaySearch_mattrix(problem_solution.SearchProblem):
                 continue
             #Cost to move 1 step is 1
             addcost = 1
+            if self.matrix[newstate[0]][newstate[1]] == '+':
+                addcost += self.reward[newstate]
             ans.append((action,newstate,addcost))
         return ans
 
@@ -144,6 +145,10 @@ class PathWaySearchBonusPoint(problem_solution.SearchProblem):
                         self.goal = (i,j)
                 else:
                     pass
+        self.reward = {}
+        self.reward[self.goal]=0
+        for x in self.bonus_points:
+            self.reward[x[0:2]] = x[-1]
         self.bonus_points = [x[0:2] for x in self.bonus_points]
     #return init state
     def initState(self):
@@ -151,7 +156,7 @@ class PathWaySearchBonusPoint(problem_solution.SearchProblem):
 
     #check is at goal state
     def isGoal(self, state):
-        return len(state) == len(self.bonus_points)+2
+        return state[-1]==self.goal
     def expandSuccessor(self, state):
         '''
         return list of (action,newstate,addcost)
@@ -164,13 +169,16 @@ class PathWaySearchBonusPoint(problem_solution.SearchProblem):
             if(x not in state):
                 new_state = state + (x,)
                 new_states.append(new_state)
-        if(len(new_states)==0): #if all of bonus point have been passed
-            new_state = state + (self.goal,)
-            #the last point we gonna pass is goal
-            new_states.append(new_state)
+        new_state = state + (self.goal,)
+        new_states.append(new_state)
         solver = problem_solution.A_StarSolution()
         for new_state in new_states:
-            problem = PathWaySearch_mattrix(self.matrix,new_state[-2],new_state[-1])
+            temp_matrix = self.matrix
+            for x in new_state[:-1]:
+                if(temp_matrix[x[0]][x[1]]=='+'):
+                    temp_matrix[x[0]][x[1]] = ' '
+                
+            problem = PathWaySearch_mattrix(temp_matrix,new_state[-2],new_state[-1],self.reward)
             solver.solve(problem)
             ans.append((solver.actions,new_state,solver.totalCost))
         return ans
