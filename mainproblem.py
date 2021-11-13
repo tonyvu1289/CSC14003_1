@@ -196,7 +196,7 @@ x = int(input('Your choose: '))
 #5 maps without bouns points
 if x == 1:
     for i in range(1,6):
-        map_name = 'maze_map'
+        map_name = 'maze/maze_map'
         map_id = str(i)
         map_extesion = '.txt'
 
@@ -205,15 +205,13 @@ if x == 1:
 
         #solve problem
         problem = PathWaySearchProblem(str(map_name+map_id+map_extesion))
-        solvers = [problem_solution.DFSSolution(),problem_solution.BFSSolution(),problem_solution.GreedyBestFirstSearchSolution(),problem_solution.A_StarSolution(),problem_solution.UniformSolution()]
+        solvers = [problem_solution.DFSSolution(),problem_solution.BFSSolution(),problem_solution.GreedyBestFirstSearchSolution(),problem_solution.A_StarSolution()]
         for solver in solvers:
-            #get aglorithm name
-
-            
+ 
             solver.solve(problem,2)
             list_actions = solver.actions
             routes = []
-            print(problem.explored)
+            # visited_point = 
             #init State
             routes.append(problem.init)
 
@@ -225,12 +223,11 @@ if x == 1:
                 k += 1
             
             #Visualize map
-            utility.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes)
+            utility.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes,problem.explored)
  #5 maps with bonus points
 elif x == 2:
-   
-    for i in range(1,6):
-        map_name = 'maze_map'
+    for i in range(6,9):
+        map_name = 'maze/maze_map'
         map_id = str(i)
         map_extesion = '.txt'
 

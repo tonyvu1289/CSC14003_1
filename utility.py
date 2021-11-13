@@ -1,7 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 
-def visualize_maze(matrix, aglo_name, ordinal_nums, bonus, start, end, route = None):
+def visualize_maze(matrix,aglo_name, ordinal_nums, bonus, start, end, route = None, visited_point=None):
     """
     Args:
       1. matrix: The matrix read from the input file,
@@ -25,9 +25,9 @@ def visualize_maze(matrix, aglo_name, ordinal_nums, bonus, start, end, route = N
                 direction.append('<')
 
         direction.pop(0)
-
+    
     #2. Drawing the map
-    ax=plt.figure(num = "Figure %d"% ordinal_nums, dpi=100).add_subplot(111)
+    ax=plt.figure(num = "Figure %d"% ordinal_nums, dpi=140).add_subplot(111)
     aglo_name = str(aglo_name)
     index = aglo_name.find('.')
     aglo_name = aglo_name[index+1:]
@@ -39,19 +39,24 @@ def visualize_maze(matrix, aglo_name, ordinal_nums, bonus, start, end, route = N
         ax.spines[i].set_visible(False)
 
     plt.scatter([i[1] for i in walls],[-i[0] for i in walls],
-                marker='X',s=100,color='black')
+                marker='X',s=50,color='black')
     
     plt.scatter([i[1] for i in bonus],[-i[0] for i in bonus],
-                marker='P',s=100,color='green')
+                marker='P',s=50,color='green')
 
     plt.scatter(start[1],-start[0],marker='*',
-                s=100,color='gold')
+                s=50,color='gold')
+    
+    if visited_point:
+        for i in range(len(visited_point)-2):
+            plt.scatter(visited_point[i+1][1],-visited_point[i+1][0],
+                        marker='.',s=20,color='silver')
 
     if route:
         for i in range(len(route)-2):
             plt.scatter(route[i+1][1],-route[i+1][0],
-                        marker=direction[i],color='silver')
-
+                        marker=direction[i],s=20,color='blue')
+    
     plt.text(end[1],-end[0],'EXIT',color='red',
          horizontalalignment='center',
          verticalalignment='center')

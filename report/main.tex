@@ -40,23 +40,6 @@ Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc 
 	\includegraphics[width=0.5\columnwidth]{demo_maze.png} % Example image
 \end{figure}
 
-\section{Cơ sở lý thuyết}
-\subsection{Không gian trạng thái}
-Xét mê cung trong bài toán nằm trên một hệ trục tọa độ hai chiều Oxy. Gọi \textbf{x} và \textbf{y} lần lượt là hoành độ và tung độ của tác nhân.\\
-- Trạng thái của tác nhân: Tọa độ (x,y) trên ma trận.\\
-- Trạng thái bắt đầu (start state): Tọa đô ($x^{'}$,$y^{'}$) của kí hiệu \textbf{Ngôi sao} trên ma trận.\\
-- Trạng thái kết thúc (goal state): Tọa độ ($x^{''}$,$y^{''}$) của kí hiệu \textbf{EXIT} trên ma trận.\\
-- Hành động của tác nhân: Di chuyển lên trên, xuống dưới, qua trái, qua phải.\\
-- Hàm kế nhiệm, kế thừa (successor function): ExpandSuccessor - dùng để lựa chọn ô kế nhiệm ô cũ và cập nhật lại vị trí hiện tại của tác nhân.\\
-- Hàm kiểm tra kết thúc: isGoal - kiểm tra trạng thái tác nhân đang xét (x,y) có phải là ô kết thúc (lối ra của mê cung) hay không.
-\subsection{Xây dựng cấu trúc bài toán}
-Để cái đặt các thuật toán tìm kiếm trên ma trận có kích thước MxN, ta cần xây dựng một danh sách các điểm kề với điểm tại vị trí đang xét và chi phí phát sinh giữa điểm đang xét và các cạnh kề của nó.\\
-
-Gọi ô (vị trí) của tác nhân tại một điểm nhất định là (x,y) trong ma trận, ứng với các hướng di chuyển lên, xuống, trái, phải, ta sẽ có các ô kề với tọa độ lần lượt là (x,y-1), (x,y+1), (x-1,y), (x+1,y). Do các ô có kích thước là như nhau nên chi phí di chuyển tới các ô kề sẽ là như nhau và trong đồ án này sẽ được đặt mặc định là 1.\\
-
-Bằng cách phát sinh các ô kề của ô mà tác nhân đang đứng, ta sẽ có thể xây dựng danh sách các ô kề và chi phí. Khi cần lấy danh sách các ô kề và chi phí của ô hiện tại mà tác nhân đang đứng (x,y), ta phát sinh ra tọa độ ô kề thứ i của u bằng công thức (x+$dx_{i}$, y+$dy_{i}$) và chi phí tương ứng là $w_{i}$ , $\forall{i\ge0}\cup{i\le4}$\\
-
-Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đang đứng, ta sẽ cài đặt hàm kế nhiệm để tính toán xem các ô kề có phải là bức tường chắn hay không đồng thời tính toán chi phí, và dựa trên kết quả đó để trả về những ô phù hợp có thể kế nhiệm ô hiện tại.
 \section{Xây dựng cấu trúc chương trình} \cite{standfordcs221}
 Mục tiêu của việc xây dựng cấu trúc chương trình là để việc cài đặt những thuật toán được tổng quát hóa, giúp cài đặt những bài toán khác nhau và giải chúng bằng nhiều thuật toán khác nhau trở nên đơn giản hơn. 
 
@@ -162,6 +145,84 @@ Ngoài ra, khi add\_update element thành công thì mới bổ sung hastable co
 Thực hiện giống A*.
 
 Phần add\_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
+
+\section{Cơ sở lý thuyết}
+\subsection{Không gian trạng thái}
+Xét mê cung trong bài toán nằm trên một hệ trục tọa độ hai chiều Oxy. Gọi \textbf{x} và \textbf{y} lần lượt là hoành độ và tung độ của tác nhân.\\
+- Trạng thái của tác nhân: Tọa độ (x,y) trên ma trận.\\
+- Trạng thái bắt đầu (start state): Tọa đô ($x^{'}$,$y^{'}$) của kí hiệu \textbf{Ngôi sao} trên ma trận.\\
+- Trạng thái kết thúc (goal state): Tọa độ ($x^{''}$,$y^{''}$) của kí hiệu \textbf{EXIT} trên ma trận.\\
+- Hành động của tác nhân: Di chuyển lên trên, xuống dưới, qua trái, qua phải.\\
+- Hàm kế nhiệm, kế thừa (successor function): ExpandSuccessor - dùng để lựa chọn ô kế nhiệm ô cũ và cập nhật lại vị trí hiện tại của tác nhân.\\
+- Hàm kiểm tra kết thúc: isGoal - kiểm tra trạng thái tác nhân đang xét (x,y) có phải là ô kết thúc (lối ra của mê cung) hay không.
+\subsection{Xây dựng cấu trúc bài toán}
+Để cái đặt các thuật toán tìm kiếm trên ma trận có kích thước MxN, ta cần xây dựng một danh sách các điểm kề với điểm tại vị trí đang xét và chi phí phát sinh giữa điểm đang xét và các cạnh kề của nó.\\
+
+Gọi ô (vị trí) của tác nhân tại một điểm nhất định là (x,y) trong ma trận, ứng với các hướng di chuyển lên, xuống, trái, phải, ta sẽ có các ô kề với tọa độ lần lượt là (x,y-1), (x,y+1), (x-1,y), (x+1,y). Do các ô có kích thước là như nhau nên chi phí di chuyển tới các ô kề sẽ là như nhau và trong đồ án này sẽ được đặt mặc định là 1.\\
+
+Bằng cách phát sinh các ô kề của ô mà tác nhân đang đứng, ta sẽ có thể xây dựng danh sách các ô kề và chi phí. Khi cần lấy danh sách các ô kề và chi phí của ô hiện tại mà tác nhân đang đứng (x,y), ta phát sinh ra tọa độ ô kề thứ i của u bằng công thức (x+$dx_{i}$, y+$dy_{i}$) và chi phí tương ứng là $w_{i}$ , $\forall{i\ge0}\cup{i\le4}$\\
+
+Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đang đứng, ta sẽ cài đặt hàm kế nhiệm để tính toán xem các ô kề có phải là bức tường chắn hay không đồng thời tính toán chi phí, và dựa trên kết quả đó để trả về những ô phù hợp có thể kế nhiệm ô hiện tại.
+
+\newpage
+\section{Đánh giá thực nghiệm}
+\subsection{Giao diện kết quả}
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=0.8\columnwidth]{Figures/fg1_dfs.png} % Example image
+	\end{figure}
+\begin{itemize}
+	\item DFSSolution: Tên thuật toán sử dụng (bao gồm DFSSolution, BFSSolution, GreedyBestFirstSearchSolution, A\_StarSolution) \\
+	\item \textbf{$\triangle$}: Đường đi của tác nhân thoát khỏi mê cung. \\
+	\item \textbf{$\bigcirc$}: Các ô đã duyệt qua (bao gồm cả ô được chọn làm đường đi và ô không được chọn làm đường đi).\\
+	\item \textcolor{yellow}{\textbf{$\star$}}: Đánh dấu điểm bắt đầu của tác nhân. \\
+	\item \textbf{X}: biểu diễn các bức tường chắn của mê cung.\\
+	\item \textcolor{red}{EXIT} đánh dấu lối thoát của mê cung.\
+\end{itemize}
+
+\newpage
+\subsection{Bản đồ không có điểm thưởng}
+\begin{itemize}
+	\item Bản đồ 1:
+		\begin{figure}[h] \label{123}
+			\centering
+			\begin{tabular}{cc}
+				\includegraphics[width=8cm]{Figures/fg1_dfs.png} &
+				\includegraphics[width=8cm]{Figures/fg1_bfs.png} \\
+			\end{tabular}
+		\end{figure}
+		\begin{figure}[h] \label{fig:three-alternative-operations}
+			\centering
+			\begin{tabular}{cc}
+				\includegraphics[width=8cm]{Figures/fg1_gbfs.png} &
+				\includegraphics[width=8cm]{Figures/fg1_astar.png}
+			\end{tabular}
+		\end{figure}
+		\begin{itemize}
+			\item \textbf{Nhận xét}: Thuật toán DFS duyệt qua các điểm rất ít mà vẫn có thể tìm được đường để thoát ra khỏi mê cung, tuy nhiên đường đi tìm được không tối ưu (tìm được đường đi dài nhất trong 4 thuật toán). Thuật toán DFS có vẻ khác biệt rất lớn với 3 thuật toán còn lại khi số ô duyệt qua là ít nhất và tìm được đường đi dài nhất. Cả 3 thuật toán BFS,GBFS, Astar hầu như phải duyệt qua hết tất cả các ô. Trong bản đồ này thì 3 thuật toán này cho ra kết quả khá giống nhau.
+		\end{itemize}
+	
+	\newpage
+	\item Bản đồ 2:
+	\begin{figure}[h] \label{bd2}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg2_dfs.png} &
+			\includegraphics[width=8cm]{Figures/fg2_bfs.png} \\
+		\end{tabular}
+	\end{figure}
+	\begin{figure}[h] \label{Hình 2}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg2_gbfs.png} &
+			\includegraphics[width=8cm]{Figures/fg2_astar.png}
+		\end{tabular}
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Trong bản đồ này, ta dễ dàng nhận thấy thuật toán DFS duyệt qua ít ô nhất nhưng lại tìm được đường đi dài nhất. Ba thuật toán BFS, GBFS, Astar tìm được những đường đi khác nhau nhưng thuật toán BFS và Astar lại ra đường đi bằng nhau và ngắn nhất. Thuật toán GBFS lại cho ra kết quả độ dài đường đi tương đương với DFS, bởi vì thuật toán GBFS sử dụng hàm heuristic để đánh giá ước lượng để chọn đường đi, tuy nhiên do có những vật cản. Theo lý thuyết ô đó rất gần lối thoát (dựa trên khoảng cách Manhattan) nhưng thực tế do có vật cản làm cho đường đi không còn được tối ưu nữa. Thuật toán Astar về lý thuyết cũng sử dụng hàm heuristic (khoảng cách Manhattan) nhưng đây là thuật toán dựa trên sự kết hợp từ thuật toán Dijkstra nên sẽ tính toán để tối ưu chi phí hơn từ đó vừa tìm được đường đi ngắn vừa tối ưu được chi phí kể cả khi có vật cản.
+	\end{itemize}
+\end{itemize}
+
 
 
 \bibliographystyle{plain}
