@@ -195,7 +195,7 @@ print('2. Testing maps with bonus point')
 x = int(input('Your choose: '))
 #5 maps without bouns points
 if x == 1:
-    for i in range(1,6):
+    for i in range(4,6):
         map_name = 'maze/maze_map'
         map_id = str(i)
         map_extesion = '.txt'
@@ -239,7 +239,6 @@ elif x == 2:
         problem = PathWaySearchBonusPoint(str(map_name+map_id+map_extesion))
         solvers = [problem_solution.UniformSolution()]
         for solver in solvers:
-            #get aglorithm name
             solver.solve(problem,2)
             list_actions = solver.actions
             routes = []
