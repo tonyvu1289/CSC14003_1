@@ -224,6 +224,7 @@ if x == 1:
             
             #Visualize map
             utility.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes,problem.explored)
+            problem.explored.clear()
  #5 maps with bonus points
 elif x == 2:
     for i in range(6,9):
