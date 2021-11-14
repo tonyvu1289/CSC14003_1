@@ -23,13 +23,13 @@
 	\centering
 	\includegraphics[width=0.4\columnwidth]{hcmus.png} % Example image
 \end{figure}
-
+\tableofcontents% tạo mục lục
 %------------------------------------------------
 \newpage
 \section{Mô tả đồ án}
 \subsection{Dẫn nhập}
 Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc nào đó, điều đó cũng rất đúng khi áp dụng trong việc tìm kiếm đường đi. Làm thế nào để có thể lựa chọn đường đi ngắn nhất, ít vật cản nhất khi đi từ điểm A đến điểm B. Nhưng cũng có lúc cũng chỉ quan tâm đến cách để đi từ điểm A đến B sao cho chi phí thấp nhất mà không cần quan tâm đến độ dài đường đi. Từ đó những vấn đề thực tiễn đó, chúng ta đưa ra khải niệm về bài toán tìm đường đi trong một không gian ma trận MxN.
-\subsection{Yêu cầu đồ án}
+\subsection{Yêu cầu đồ án} \cite{slide}
  Áp dụng các thuật toán tìm kiếm không có thông tin và có thông tin để tìm đường đi thoát khỏi mê cung. 
 \\- Kí hiệu \textbf{Ngôi sao} trong mê cung đánh dấu điểm bắt đầu của vật thể. 
 \\- Kí hiệu \textbf{X} biểu diễn các bức tường chắn của mê cung.
@@ -43,14 +43,14 @@ Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc 
 \section{Xây dựng cấu trúc chương trình} \cite{standfordcs221}
 Mục tiêu của việc xây dựng cấu trúc chương trình là để việc cài đặt những thuật toán được tổng quát hóa, giúp cài đặt những bài toán khác nhau và giải chúng bằng nhiều thuật toán khác nhau trở nên đơn giản hơn. 
 
-Theo cách những nhà phát triển phần mềm, mã nguồn có thể được tái sử dụng trong nhiều trường hợp khác nhau, giúp người lập trình có thể tập trung hơn vào phần tối ưu thuật toán mà không nghĩ ngợi nhiều về phần kỹ thuật, cài đặt.
+Theo cách nói của những nhà phát triển phần mềm, mã nguồn có thể được tái sử dụng trong nhiều trường hợp khác nhau, giúp người lập trình có thể tập trung hơn vào phần tối ưu thuật toán mà không nghĩ ngợi nhiều về phần kỹ thuật, cài đặt.
 
 Việc cài đặt dựa chủ yếu vào kỹ thuật kế thừa, đa hình trong kỹ thuật lập trình hướng đối tượng. Chương trình sẽ được trực quan hóa bằng biểu đồ UML sau đây.
 
 \newpage
 \begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
 	\centering
-	\includegraphics[width=1.2\columnwidth]{classes_uml_diagram.png} % Example image
+	\includegraphics[width=1.2\columnwidth]{Figures/UML.png} % Example image
 \end{figure}
 
 \subsection{Hai class trừu tượng (Abstract Class)}
@@ -71,9 +71,11 @@ Việc cài đặt dựa chủ yếu vào kỹ thuật kế thừa, đa hình tr
 	numberstyle=\tiny, % Line numbers styling
 	]{abstract_class.txt}
 
-Cấu trúc của bài toán cũng như những "nguyên liệu" để giải bài toán ấy như : trạng thái ban đầu(init state), trạng thái đích(goals), mở rộng trạng thái kề(expand successor)\cite{csttnt_lhb},... được biểu diễn dưới dạng các phương thức của một thực thể của class SearchProblem. Ở class Solution, phương thức duy nhất là solve(problem,display) sẽ được truyền vào tham số là một thực thể của class SearchProblem. Phương thức solve sẽ được cài đặt một cách trừu tượng để có thể giải được bất cứ bài toán tìm kiếm nào dựa vào những "nguyên liệu" được lấy từ thực thể class SearchProblem truyền vào.
+Cấu trúc của bài toán cũng như những "nguyên liệu" để giải bài toán ấy như : trạng thái ban đầu(init state), trạng thái đích(goals), mở rộng trạng thái kề(expand successor)\cite{csttnt_lhb},... được biểu diễn dưới dạng các phương thức của một thực thể của class SearchProblem. 
 
-Phương thức display\_explored(state) của class SearchProblem có nhiệm vụ trực quan hóa trạng thái hiện tại để quá trình cài đặt thuật toán thuận lợi hơn, không bắt buộc có.Vì vậy, class kế thừa SeachProblem không bắt buộc cài đặt phương thức này, ta cho lệnh "pass" (bỏ qua) nếu phương thức này được gọi từ abstract class.
+Ở class Solution, phương thức duy nhất là solve(problem,display) sẽ được truyền vào tham số là một thực thể của class SearchProblem. Phương thức solve sẽ được cài đặt một cách trừu tượng để có thể giải được bất cứ bài toán tìm kiếm nào dựa vào những "nguyên liệu" được lấy từ thực thể class SearchProblem truyền vào.
+
+Phương thức display\_explored(state) của class SearchProblem có nhiệm vụ trực quan hóa trạng thái hiện tại để quá trình cài đặt thuật toán thuận lợi hơn, không bắt buộc có. Vì vậy, class kế thừa SeachProblem không bắt buộc cài đặt phương thức này, ta cho lệnh "pass" (bỏ qua) nếu phương thức này được gọi từ abstract class.
 
 \subsection{Class PriorityQueue}
 Đây là lớp hàng đợi ưu tiên được bổ sung một vài tính năng để tối ưu cho bài toán tìm kiếm.
@@ -92,7 +94,7 @@ Các tính năng bổ sung bao gồm : không push lại những phần tử đ�
 Thuộc tính \textbf{heap} là một list các tuple (element, value).Việc sắp xếp, pop, push các phần tử theo cấu trúc heap được thực hiện bởi hàm heappush trong thư viện heapq của python3.
 
 Thuộc tính \textbf{priority} là một dict lưu trữ các element đã được thêm vào heap (kể cả các element đã được pop khỏi heap) và value của mỗi element đó. Những element nào đã được pop ra sẽ được gán value bằng với thuộc tính \textbf{DONE} mang giá trị $- \infty$ để phân biệt với các giá trị khác, thuận tiện cho việc viết điều kiện rẽ nhánh cho chương trình bỏ qua update hoặc thêm vào heap nếu đã được pop.
-\subsection{Các class kế thừa abstract class}
+\subsection{Các class kế thừa Solution}
 Phần này sẽ giải thích các class kế thừa abstract tức những thuật toán cụ thể
 \subsubsection{BreadFirstSearch}
 Đầu tiên ta khởi tạo những biến sau đây:  
@@ -145,9 +147,7 @@ Ngoài ra, khi add\_update element thành công thì mới bổ sung hastable co
 Thực hiện giống A*.
 
 Phần add\_update element : thay vì add (state,cost + h(x)), ta add (state,h(x)).
-
-\section{Cơ sở lý thuyết}
-\subsection{Không gian trạng thái}
+\subsection{Phân tích cấu trúc bài toán}
 Xét mê cung trong bài toán nằm trên một hệ trục tọa độ hai chiều Oxy. Gọi \textbf{x} và \textbf{y} lần lượt là hoành độ và tung độ của tác nhân.\\
 - Trạng thái của tác nhân: Tọa độ (x,y) trên ma trận.\\
 - Trạng thái bắt đầu (start state): Tọa đô ($x^{'}$,$y^{'}$) của kí hiệu \textbf{Ngôi sao} trên ma trận.\\
@@ -155,16 +155,39 @@ Xét mê cung trong bài toán nằm trên một hệ trục tọa độ hai chi
 - Hành động của tác nhân: Di chuyển lên trên, xuống dưới, qua trái, qua phải.\\
 - Hàm kế nhiệm, kế thừa (successor function): ExpandSuccessor - dùng để lựa chọn ô kế nhiệm ô cũ và cập nhật lại vị trí hiện tại của tác nhân.\\
 - Hàm kiểm tra kết thúc: isGoal - kiểm tra trạng thái tác nhân đang xét (x,y) có phải là ô kết thúc (lối ra của mê cung) hay không.
-\subsection{Xây dựng cấu trúc bài toán}
+\subsection{Chi tiết cách phát sinh ô kế nhiệm và chi phí}
 Để cái đặt các thuật toán tìm kiếm trên ma trận có kích thước MxN, ta cần xây dựng một danh sách các điểm kề với điểm tại vị trí đang xét và chi phí phát sinh giữa điểm đang xét và các cạnh kề của nó.\\
 
 Gọi ô (vị trí) của tác nhân tại một điểm nhất định là (x,y) trong ma trận, ứng với các hướng di chuyển lên, xuống, trái, phải, ta sẽ có các ô kề với tọa độ lần lượt là (x,y-1), (x,y+1), (x-1,y), (x+1,y). Do các ô có kích thước là như nhau nên chi phí di chuyển tới các ô kề sẽ là như nhau và trong đồ án này sẽ được đặt mặc định là 1.\\
-
+Tuy nhiên chi phi không phải lúc nào cũng là 1. Nó có thể thay đổi trong trường hợp bài toán có điểm thưởng mà sẽ được nói chi tiết ở phần tiếp theo\\
 Bằng cách phát sinh các ô kề của ô mà tác nhân đang đứng, ta sẽ có thể xây dựng danh sách các ô kề và chi phí. Khi cần lấy danh sách các ô kề và chi phí của ô hiện tại mà tác nhân đang đứng (x,y), ta phát sinh ra tọa độ ô kề thứ i của u bằng công thức (x+$dx_{i}$, y+$dy_{i}$) và chi phí tương ứng là $w_{i}$ , $\forall{i\ge0}\cup{i\le4}$\\
 
 Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đang đứng, ta sẽ cài đặt hàm kế nhiệm để tính toán xem các ô kề có phải là bức tường chắn hay không đồng thời tính toán chi phí, và dựa trên kết quả đó để trả về những ô phù hợp có thể kế nhiệm ô hiện tại.
-
+\section{Cơ sở lý thuyết của tính tối ưu và đầy đủ}
+\footnote{\cite{csttnt_lhb}:Chương 1: mục III.4} 
+Tính đầy đủ: Một thuật toán có tính đầy đủ là một thuật toán đảm bảo tìm được lời giải cuối cùng cho bài toán đưa ra.\\
+Tính tối ưu: Một thuật có tính tối ưu thì có tính đầy đủ và cho ra chuỗi các hành động có chi phí thấp nhất để đạt được mục đích bài toán\\
+\subsection{Tính đầy đủ}
+Tất cả các thuật toán BFS,BestFirstSearch, A*, DFS đều là các thuật toán đầy đủ \textbf{trong bài toán mê cung} dựa trên cơ sở sau:\\
+	Tất cả các thuật toán trên chỉ \textbf{dừng lại}(hay nói cách khác là ngừng tạo ra trạng thái mới) khi tập \textbf{frontier}(những trạng thái sẽ được khám phá) \textbf{rỗng}, điều này chỉ xảy ra khi \textbf{hàm sinh trạng thái} trả về \textbf{rỗng}, tức không có trạng thái nào được sinh ra từ không gian trạng thái nữa hay nói cách khác là \textbf{tất cả những trường hợp} đã được \textbf{vét cạn}. Nếu tồn tại \textbf{trạng thái đích} thì nó chắc chắn sẽ được \textbf{đẩy vào trong frontier} và được \textbf{khám phá}. Như vậy ta kết luận tất cả các phương pháp tìm kiếm trên đều có tính đầy đủ.\\
+Tuy nhiên, với trường hợp của DFS và Best First Search, trong trường hợp không gian trạng thái là vô hạn (tức không thể vét cạn) thì sẽ mất đi tính đầy đủ bởi nếu đi sai đường, thuật toán sẽ tiếp tục đi mà không thể quay về (chỉ quay về khi không đi được nữa, mà không gian trạng thái là vô hạn).\\
+Còn với BFS,A*, nếu tồn tại đích thì đích đó sẽ phải nằm ở tầng thứ n (theo chiều rộng). Thuật toán khi mở rộng đến tầng thứ n (nếu hàm heuristic của A* là tối ưu) chắc chắn sẽ tìm được trạng thái đích.\\
+\subsection{Tính tối ưu}
+\subsection{BFS và UCS}
+Về tổng quan, BFS chỉ mở rộng theo chiều rộng của những trạng thái đã được khám phá cho đến khi tìm được trạng thái đích. Đường đi trả về sẽ là dãy các trạng thái được sinh ra và trạng thái cha, bắt đầu từ trạng thái đích và kết thúc ở trạng thái đầu.\\
+Tuy nhiên trong trường hợp cụ thể là bài toán mê cung, chi phí để đi từ trạng thái này sang trạng thái khác là \textbf{bằng nhau}.\\
+Lúc này, trạng thái được khám phá sẽ luôn là trạng thái có chi phí mở rộng \textbf{ít nhất}, thuật toán lại hoạt động như thuật giải.\textbf{UCS}.\\
+Vì vậy, trong trường hợp \textbf{bài toán mê cung} thì \textbf{BFS} có tính \textbf{tối ưu}, còn \textbf{tổng quan} thì \textbf{không}.
+\subsection{DFS,BestFirstSearch}
+BestFirstSearch và DFS đều không tối ưu.\\
+\textbf{BestFirstSearch} : chỉ quan tâm tới tối ưu cho bước tiếp theo chứ không quan tâm đến toán cục.\\
+Ví dụ : Cho 3 điểm A,B,C, ta muốn đi A đến C, hàm heuritic cho ra $A->C = 5, A->B = 3, B->C = 3$. BestFirstSearch sẽ chọn con đường đi tiếp theo với chi phí thấp nhất là $A->B->C$ vì thuật toán luôn chọn đường đi tối ưu cho bước tiếp theo mà không quan tâm đến tối ưu toàn cục.
+\textbf{DFS} : nếu đi vào một con đường \textbf{không tối ưu} nhưng vẫn \textbf{tìm ra đích} thì thuật toán vẫn sẽ trả về con đường ấy chứ không quay lại để tìm con đường tối ưu thật sự. Thứ tự chọn trạng thái con để mở rộng theo chiều sâu cũng phụ thuộc vào lúc cài đặt nên càng không tối ưu.\\
+\subsection{A*}
+\footnote{\cite{csttnt_lhb}, Chương 2: Mục I.2: Tìm kiếm A*} "Để đảm bảo A* tìm được lời giải tối ưu thì hàm $h(n)$ phải là hàm heuristic chấp nhận được. Hàm heuristic chấp nhận được khi nó không bao giờ ước lượng quá chi phí để đến đích thật sự."\\
+Ở bài toán này, ta chọn hàm heuristic chính là khoảng cách mahatan từ nguồn đến đích. Đây là hàm heuristic chấp nhận được vì khoảng cách mahatan chính là chi phí ngắn nhất có thể nếu múôn đi từ nguồn đến đích, nên chắc chắn nó ngắn hơn đường đi thực tế với nhiều vật cản.\\
 \newpage
+\subsection{}
 \section{Đánh giá thực nghiệm}
 \subsection{Giao diện kết quả}
 	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
@@ -199,7 +222,7 @@ Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đ
 			\end{tabular}
 		\end{figure}
 		\begin{itemize}
-			\item \textbf{Nhận xét}: Thuật toán DFS duyệt qua các điểm rất ít mà vẫn có thể tìm được đường để thoát ra khỏi mê cung, tuy nhiên đường đi tìm được không tối ưu (tìm được đường đi dài nhất trong 4 thuật toán). Cả 3 thuật toán BFS, Greedy Best First Search, $A^{\star}$ cho kết quả khá tương đồng. Tuy nhiên Thuật toán BFS phải duyệt qua nhiều ô hơn 2 thuật toán còn lại. Đó là vì thuật toán BFS duyệt theo chiều rộng (hay còn gọi là vét cạn) nên phải duyệt qua hết tất cả mọi ô có khả năng đi qua. Như trong bản đồ này có những ô nằm trong ngõ cụt (không cần thiết phải đi qua) nhưng thuật toán BFS vẫn phải duyệt qua gây tốn chi phí về bộ nhớ và thời gian xử lí.
+			\item \textbf{Nhận xét}: Thuật toán DFS duyệt qua các điểm rất ít mà vẫn có thể tìm được đường để thoát ra khỏi mê cung, tuy nhiên đường đi tìm được không tối ưu (tìm được đường đi dài nhất trong 4 thuật toán).\\ Cả 3 thuật toán BFS, Greedy Best First Search, $A^{\star}$ cho kết quả khá tương đồng. \\Tuy nhiên Thuật toán BFS phải duyệt qua nhiều ô hơn 2 thuật toán còn lại. Đó là vì thuật toán BFS duyệt theo chiều rộng (hay còn gọi là vét cạn) nên phải duyệt qua hết tất cả mọi ô có khả năng đi qua. Như trong bản đồ này có những ô nằm trong ngõ cụt (không cần thiết phải đi qua) nhưng thuật toán BFS vẫn phải duyệt qua gây tốn chi phí về bộ nhớ và thời gian xử lí.\\Thuật toán BreadFirstSearch cho ra đường đi không tối ưu khi nó chỉ xem xét khoảng cách từ vị trí hiện tại đến đích theo đường chim bay, trong khi thực tế có vật cản là một bức tường chắn ngang nên thay vì né ra từ đầu thì thuật toán đụng tường rồi mới né, dẫn đến mất thêm chi phí.
 		\end{itemize}
 	
 	\newpage
@@ -281,13 +304,20 @@ Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đ
 		\end{tabular}
 	\end{figure}
 	\begin{itemize}
-		\item \textbf{Nhận xét}: Trong một bản đồ có kích thước lớn, thuật toán DFS vẫn cho ra kết quả đường đi dài nhất nhưng chi phí duyệt qua các ô khá tương đối. Trong khi đó, thuật toán BFS phải duyệt hầu hết các ô trong bản đồ mới tìm ra được đường đi ngắn nhất và tối ưu nhất. Thuật toán BFS lại tiếp tục bị đánh lừa bởi những điểm gần lối thoát nhưng lại bị cản bởi vật cản, nên cho ra kết quả đường đi dài hơn BFS và $A^{\star}$. Mặc dù thuật toán BFS và $A^{\star}$ cho ra kết quả hai đường đi khác nhau nhưng chi phí đường đi thì tương đồng với nhau.
+		\item \textbf{Nhận xét}: Trong một bản đồ có kích thước lớn, thuật toán DFS vẫn cho ra kết quả đường đi dài nhất nhưng chi phí duyệt qua các ô tương đối ít. Trong khi đó, thuật toán BFS phải duyệt hầu hết các ô trong bản đồ mới tìm ra được đường đi ngắn nhất và tối ưu nhất. Thuật toán GreedyBestFirstSearch lại tiếp tục bị đánh lừa bởi những điểm gần lối thoát nhưng lại bị cản bởi vật cản, nên cho ra kết quả đường đi dài hơn BFS và $A^{\star}$. Mặc dù thuật toán BFS và $A^{\star}$ cho ra kết quả hai đường đi khác nhau nhưng chi phí đường đi thì tương đồng với nhau.
 	\end{itemize}
 	\end{itemize}
 
 \newpage
-\subsection{Bản đồ có điểm thưởng}
-- Để có thể tối ưu trong việc tìm đường đi ngắn mà vẫn có thể nhận được nhiều điểm thường nhất, nhóm em đề ra chiến lược cài đặt thêm thuật toán Uniform Cost Search (UCS). Ta quy ước mỗi điểm thưởng, ô bắt đầu, lối thoát là mỗi một node của một đồ thị. Mỗi node điểm thưởng sẽ có giá trị điểm thưởng nhất định tương ứng với giá trị của node đó trong đồ thị.
+\section{Bản đồ có điểm thưởng}
+Ta biểu diễn cấu trúc bài toán điểm thưởng dưới dạng 1 bài toán tìm kiếm như sau:\\
+- \textbf{Cấu trúc trạng thái}: là một list các điểm(bao gồm điểm thưởng, điểm bắt đầu, điểm đích) đã đi qua, điểm đi qua cuối cùng ở cuối list. \\
+- \textbf{Trạng thái ban đầu} : là  list chỉ chứa điểm bắt đầu\\
+- \textbf{Trạng thái kết thúc} : là list chứa điểm kết thúc\\
+- \textbf{Hàm sinh trạng thái - Chi phí - Chuỗi hành động} :các trạng thái mới được sinh ra là các list mới được tạo ra bằng cách thêm \textbf{các điểm chưa đi qua} vào list cha. \textbf{Chi phí - Hành động} của trạng thái mới là \textbf{chi phí và dãy hành động} để di chuyển giữa \textbf{vị trí hiện tại} và \textbf{vị trí được thêm vào list}. Chi phí và dãy hành động giữa 2 điểm ấy có được nhờ vào việc thực hiện thuật toán \textbf{A*} (được cho là thuật toán tốt nhất để tìm đường đi giữa 2 điểm).\\
+\emph{Có thể sẽ có thắc mắc nếu chi phí đi từ điểm thưởng này đến điểm thưởng kia là chi phí đi giữa 2 điểm thưởng \textbf{trên bản đồ}, vậy còn điểm thưởng được cộng vào ở đâu? Câu trả lời là trong lúc cài đặt bản đồ, nếu ô được đi tới có điểm thưởng thì chi phí thay vì là 1 sẽ là 1+ điểm thưởng.Việc cài đặt như vậy sẽ khiến bài toán tính đến trường hợp tồn tại điểm thưởng $C$ \textbf{trên đường đi} từ điểm thưởng $A$ đến điểm thưởng $B$}\\
+Sau khi xây dựng xong trạng thái cho bài toán tìm kiếm với điểm thưởng. Ta chỉ cần sử dụng lại những giải thuật ở trên để giải bài toán ấy. Vì hàm heuristic cho bài toán được xây dựng ở trên \textbf{khá phức tạp} (chưa nghĩ ra), ta sẽ sử dụng thuật giải \textbf{UniformCostSearch} để tìm ra lời giải tối ưu nhất.\\
+\subsection{Đánh giá thực nghiệm}
 \begin{itemize}
 	\item \textbf{Bản đồ 1}:
 	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
