@@ -199,7 +199,7 @@ Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đ
 			\end{tabular}
 		\end{figure}
 		\begin{itemize}
-			\item \textbf{Nhận xét}: Thuật toán DFS duyệt qua các điểm rất ít mà vẫn có thể tìm được đường để thoát ra khỏi mê cung, tuy nhiên đường đi tìm được không tối ưu (tìm được đường đi dài nhất trong 4 thuật toán). Thuật toán DFS có vẻ khác biệt rất lớn với 3 thuật toán còn lại khi số ô duyệt qua là ít nhất và tìm được đường đi dài nhất. Cả 3 thuật toán BFS,GBFS, Astar hầu như phải duyệt qua hết tất cả các ô. Trong bản đồ này thì 3 thuật toán này cho ra kết quả khá giống nhau.
+			\item \textbf{Nhận xét}: Thuật toán DFS duyệt qua các điểm rất ít mà vẫn có thể tìm được đường để thoát ra khỏi mê cung, tuy nhiên đường đi tìm được không tối ưu (tìm được đường đi dài nhất trong 4 thuật toán). Cả 3 thuật toán BFS, Greedy Best First Search, $A^{\star}$ cho kết quả khá tương đồng. Tuy nhiên Thuật toán BFS phải duyệt qua nhiều ô hơn 2 thuật toán còn lại. Đó là vì thuật toán BFS duyệt theo chiều rộng (hay còn gọi là vét cạn) nên phải duyệt qua hết tất cả mọi ô có khả năng đi qua. Như trong bản đồ này có những ô nằm trong ngõ cụt (không cần thiết phải đi qua) nhưng thuật toán BFS vẫn phải duyệt qua gây tốn chi phí về bộ nhớ và thời gian xử lí.
 		\end{itemize}
 	
 	\newpage
@@ -219,11 +219,105 @@ Sau khi khởi tạo được danh sách các ô kề của ô mà tác nhân đ
 		\end{tabular}
 	\end{figure}
 	\begin{itemize}
-		\item \textbf{Nhận xét}: Trong bản đồ này, ta dễ dàng nhận thấy thuật toán DFS duyệt qua ít ô nhất nhưng lại tìm được đường đi dài nhất. Ba thuật toán BFS, GBFS, Astar tìm được những đường đi khác nhau nhưng thuật toán BFS và Astar lại ra đường đi bằng nhau và ngắn nhất. Thuật toán GBFS lại cho ra kết quả độ dài đường đi tương đương với DFS, bởi vì thuật toán GBFS sử dụng hàm heuristic để đánh giá ước lượng để chọn đường đi, tuy nhiên do có những vật cản. Theo lý thuyết ô đó rất gần lối thoát (dựa trên khoảng cách Manhattan) nhưng thực tế do có vật cản làm cho đường đi không còn được tối ưu nữa. Thuật toán Astar về lý thuyết cũng sử dụng hàm heuristic (khoảng cách Manhattan) nhưng đây là thuật toán dựa trên sự kết hợp từ thuật toán Dijkstra nên sẽ tính toán để tối ưu chi phí hơn từ đó vừa tìm được đường đi ngắn vừa tối ưu được chi phí kể cả khi có vật cản.
+		\item \textbf{Nhận xét}: Trong bản đồ này, ta dễ dàng nhận thấy thuật toán DFS và BFS hầu như duyệt qua mọi ô có thể đi, nhưng thuật toán DFS lại tìm được đường đi dài hơn. Ba thuật toán BFS, Greedy Best First Search, $A^{\star}$ tìm được những đường đi khác nhau nhưng thuật toán BFS và $A^{\star}$ lại ra đường đi có chi phí bằng nhau và ngắn nhất. Thuật toán Greedy Best First Search lại cho ra kết quả độ dài đường đi tương đương với DFS, bởi vì thuật toán GBFS sử dụng hàm heuristic để đánh giá và ước lượng để chọn đường đi, tuy nhiên do có những vật cản nên hàm heuristic đôi khi sẽ bị đánh lừa. Theo lý thuyết một ô rất gần lối thoát (dựa trên khoảng cách Manhattan) nhưng thực tế do có vật cản làm nên khi chọn ô đó để đi qua thì đường đi trở nên dài hơn và không còn được tối ưu nữa. Thuật toán $A^{\star}$ về lý thuyết cũng sử dụng hàm heuristic (khoảng cách Manhattan) nhưng đây là thuật toán dựa trên sự kết hợp từ thuật toán Dijkstra nên sẽ tính toán để tối ưu chi phí hơn, từ đó vừa tìm được đường đi ngắn vừa tối ưu được chi phí kể cả khi có vật cản.
+	\end{itemize}
+
+	\newpage
+	\item Bản đồ 3:
+	\begin{figure}[h] \label{bd3}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg3_dfs.png} &
+			\includegraphics[width=8cm]{Figures/fg3_bfs.png} \\
+		\end{tabular}
+	\end{figure}
+	\begin{figure}[h] \label{Hình 3}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg3_gbfs.png} &
+			\includegraphics[width=8cm]{Figures/fg3_astar.png}
+		\end{tabular}
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Ta dễ dàng nhận thấy thuật toán DFS cho kết quả đường đi dài nhất và không tối ưu. Trong bản đồ này, thuật toán BFS lộ rõ nhược điểm của bản thân khi phải duyệt gần như toàn bộ các ô trong ma trận (kể cả những ô nửa bên phải vốn dĩ không cần duyệt qua). Thuật toán Greedy Best First Search do chịu ảnh hưởng của hàm heuristic (đã giải thích ở bản đồ 2) nên cho kết qủa dài dài hơn BFS và $A^{\star}$. Thuật toán  $A^{\star}$ cho kết quả tối ưu nhất nhưng lại tốn ít chi phí xử lí và bộ nhớ nhất.
+	\end{itemize}
+	
+
+	
+	\newpage
+	\item Bản đồ 4:
+	\begin{figure}[h] \label{bd4}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg4_dfs.png} &
+			\includegraphics[width=8cm]{Figures/fg4_bfs.png} \\
+		\end{tabular}
+	\end{figure}
+	\begin{figure}[h] \label{Hình 4}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8cm]{Figures/fg4_gbfs.png} &
+			\includegraphics[width=8cm]{Figures/fg4_astar.png}
+		\end{tabular}
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Thuật toán DFS do duyệt theo chiều sâu và theo một nhánh duy nhất. Nhược điểm của thuật toán này lộ rõ khi bản đồ xuất hiện đoạn đường thẳng, thay vì đi thẳng tới đích thì thuật toán tạo ra đường đi hình ziczac do duyệt theo một nhánh duy nhất. Các thuật toán BFS, Greedy Best First Search và $A^{\star}$ cho kết quả khá tương đồng với nhau, và chênh lệch chi phí duyệt cũng không đáng kể.
+	\end{itemize}
+
+		\newpage
+	\item Bản đồ 5:
+	\begin{figure}[h] \label{bd5}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8.5cm]{Figures/fg5_dfs.png} &
+			\includegraphics[width=8.5cm]{Figures/fg5_bfs.png} \\
+		\end{tabular}
+	\end{figure}
+	\begin{figure}[h] \label{Hình 5}
+		\centering
+		\begin{tabular}{cc}
+			\includegraphics[width=8.5cm]{Figures/fg5_gbfs.png} &
+			\includegraphics[width=8.5cm]{Figures/fg5_astar.png}
+		\end{tabular}
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Trong một bản đồ có kích thước lớn, thuật toán DFS vẫn cho ra kết quả đường đi dài nhất nhưng chi phí duyệt qua các ô khá tương đối. Trong khi đó, thuật toán BFS phải duyệt hầu hết các ô trong bản đồ mới tìm ra được đường đi ngắn nhất và tối ưu nhất. Thuật toán BFS lại tiếp tục bị đánh lừa bởi những điểm gần lối thoát nhưng lại bị cản bởi vật cản, nên cho ra kết quả đường đi dài hơn BFS và $A^{\star}$. Mặc dù thuật toán BFS và $A^{\star}$ cho ra kết quả hai đường đi khác nhau nhưng chi phí đường đi thì tương đồng với nhau.
+	\end{itemize}
+	\end{itemize}
+
+\newpage
+\subsection{Bản đồ có điểm thưởng}
+- Để có thể tối ưu trong việc tìm đường đi ngắn mà vẫn có thể nhận được nhiều điểm thường nhất, nhóm em đề ra chiến lược cài đặt thêm thuật toán Uniform Cost Search (UCS). Ta quy ước mỗi điểm thưởng, ô bắt đầu, lối thoát là mỗi một node của một đồ thị. Mỗi node điểm thưởng sẽ có giá trị điểm thưởng nhất định tương ứng với giá trị của node đó trong đồ thị.
+\begin{itemize}
+	\item \textbf{Bản đồ 1}:
+	\begin{figure}[h] % [h] forces the figure to be output where it is defined in the code (it suppresses floating)
+		\centering
+		\includegraphics[width=0.8\columnwidth]{fg6.png} % Example image
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Trong bản đồ này, ta có một điểm thưởng nằm ở góc trái của bản đồ không được chọn để đi qua. Bởi vì điểm thưởng này chỉ có giá trị là -4 mà chi phí để đi qua điểm thưởng này khá lớn nên sẽ không đi qua. Các điểm thưởng còn lại có chi phí đi tới để nhận khá thấp nên đều được đi qua và được nhận những điểm thưởng đó.
+	\end{itemize}
+
+	\newpage
+	\item \textbf{Bản đồ 2}:
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{fg7.png} % Example image
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Bản đồ này có một điểm thưởng ở góc trái. Dù chi phí để đi qua điểm thưởng đó khá lớn so với không đi qua điểm thưởng đó, nhưng giá trị điểm thưởng được cài đặt rất lớn (-50) nên vẫn sẽ đi qua điểm thưởng đó vì giá trị điểm thưởng mang lại cao hơn chi phí bỏ ra để đi qua điểm thưởng đó. 
+	\end{itemize}
+
+	\newpage
+	\item \textbf{Bản đồ 3}:
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{fg8.png} % Example image
+	\end{figure}
+	\begin{itemize}
+		\item \textbf{Nhận xét}: Bản đồ này có một điểm thưởng dù nằm rất gần trên đường đi nhưng vẫn không được đi qua bởi vì giá trị của điểm thưởng đó khá thấp (chỉ là -1) nên xét về tính tối ưu thì sẽ không đi qua điểm thưởng đó. Ngược lại có một điểm thưởng ở góc dưới bên phải có giá trị -500 rất lớn nên sẽ được ưu tiên đi qua, đồng thời khi lựa chọn đường đi ấy, ta sẽ nhận được thêm một số điểm thưởng nằm bên cạnh đường đi ấy, từ đó sẽ tạo nên sự tối ưu khi vừa tìm được đường đi ngắn mà vẫn kiếm được nhiều điểm thưởng nhất.
 	\end{itemize}
 \end{itemize}
-
-
 
 \bibliographystyle{plain}
 \bibliography{ref}
