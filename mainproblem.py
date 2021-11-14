@@ -256,7 +256,6 @@ elif x == 2:
                 # route = list_actions[k][1]
                 # routes.append(route)
                 # k += 1
-            
             #Visualize map
             utility.visualize_maze(problem.matrix,type(solver),i,problem.bonus_points,problem.init,problem.goal,routes)
  
