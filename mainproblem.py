@@ -192,10 +192,10 @@ create_map.create_maps()
 print('Please select 1 or 2:')
 print('1. Testing maps without bonus points')
 print('2. Testing maps with bonus point')
-x = int(input('Your choose: '))
+x = int(input('Your choice: '))
 #5 maps without bouns points
 if x == 1:
-    for i in range(4,6):
+    for i in range(1,6):
         map_name = 'maze/maze_map'
         map_id = str(i)
         map_extesion = '.txt'
