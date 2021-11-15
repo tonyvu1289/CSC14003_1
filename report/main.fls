@@ -802,19 +802,19 @@ INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//hcmus.png
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//hcmus.png
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//hcmus.png
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnsl10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.toc
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.toc
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnsl10.tfm
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/main.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/vntex/vnr/vnbx12.tfm
 INPUT /media/duy/New Volume/Deadline HK1 nam 3/cs_AI/CSC14003_1/report/Figures//demo_maze.png
