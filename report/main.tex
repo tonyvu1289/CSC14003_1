@@ -1,4 +1,4 @@
-\documentclass[11pt]{scrartcl} % Font size
+\documentclass[11pt]{article} % Font size
 \input{structure.tex} % Include the file specifying the document structure and custom commands
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -26,6 +26,36 @@
 \tableofcontents% tạo mục lục
 %------------------------------------------------
 \newpage
+\section{Bảng phân công}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[h]
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{@{}|l|l|l|@{}}
+	\toprule
+	Công việc                                            & Vũ Công Duy - 19120212 & Tô Gia Thuận - 19120389 \\ \midrule
+	Thiết kế chương trình                                & x                      &                         \\ \midrule
+	Viết mã nguồn phần trừu tượng                        & x                      &                         \\ \midrule
+	Cài đặt thuật toán                                   & x                      &                         \\ \midrule
+	Thiết kế cấu trúc bài toán mê cung                   &                        & x                       \\ \midrule
+	Viết mã nguồn phần đặc biệt hóa bài toán mê cung     &                        & x                       \\ \midrule
+	Thiết kế giao diện chương trình, đồ họa              &                        & x                       \\ \midrule
+	Thiết kế bản đồ                                      &                        & x                       \\ \midrule
+	Thiết kế cấu trúc bài toán có điểm thưởng            & x                      &                         \\ \midrule
+	Viết mã nguồn phần đặc biệt hóa bài toán điểm thưởng & x                      & x                       \\ \midrule
+	Kiểm thử chương trình                                & x                      & x                       \\ \midrule
+	Viết báo cáo (ai làm phần nào báo cáo phần đó)       & x                      & x                       \\ \bottomrule
+	\end{tabular}%
+	}
+	\end{table}
 \section{Mô tả đồ án}
 \subsection{Dẫn nhập}
 Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc nào đó, điều đó cũng rất đúng khi áp dụng trong việc tìm kiếm đường đi. Làm thế nào để có thể lựa chọn đường đi ngắn nhất, ít vật cản nhất khi đi từ điểm A đến điểm B. Nhưng cũng có lúc cũng chỉ quan tâm đến cách để đi từ điểm A đến B sao cho chi phí thấp nhất mà không cần quan tâm đến độ dài đường đi. Từ đó những vấn đề thực tiễn đó, chúng ta đưa ra khải niệm về bài toán tìm đường đi trong một không gian ma trận MxN.
@@ -39,8 +69,41 @@ Từ xa xưa, con người luôn muốn tìm cách tối ưu một công việc 
 	\centering
 	\includegraphics[width=0.5\columnwidth]{demo_maze.png} % Example image
 \end{figure}
+\section{Hướng dẫn sử dụng chương trình}
 
-\section{Xây dựng cấu trúc chương trình} \cite{standfordcs221}
+Chương trình khi khởi động sẽ có 2 lựa chọn, người dùng nhập vào 1 hoặc 2 tương ứng với :\\
+- 1.Chạy thuật toán tìm đường đi với \textbf{bản đồ không điểm thưởng} và trực quan hóa cách giải(bao gồm đường đi và các điểm đã khám phá). Chạy hết 5 bản đồ được đánh số từ 1-5.\\
+- 2.Chạy thuật toán tìm đường đi với \textbf{bản đồ có điểm thưởng} và trực quan hóa đường đi. Chạy hết 5 bản đồ được đánh số từ 6-8.\\
+Chi tiết :\\
+1. Chạy chương trình: chạy file \textbf{main.py} chứa chương trình chính
+\begin{figure}[h] 
+	\centering
+	\includegraphics[width=0.5\columnwidth]{Figures/hdsd_1.png}
+\end{figure}\\
+2. Lựa chọn phần muốn chạy được nêu chi tiết ở phần trên.
+\begin{figure}[h] 
+	\centering
+	\includegraphics[width=0.5\columnwidth]{Figures/hdsd_3.png}
+\end{figure}\\
+3. Với mỗi map, chương trình sẽ hiển thị : quá trình mở rộng trạng thái, các bước thực hiện đường đi kết quả, tổng số điểm đã mở rộng, chi phí đường đi kết quả và trực quan hóa những điều đó lên trên một cửa sổ đồ họa. \\ Người dùng muốn lưu lại có thể ấn nút lưu trên bản đồ.\\
+\begin{figure}[h] 
+	\centering
+	\includegraphics[width=0.5\columnwidth]{Figures/hdsd_4.png}
+\end{figure}\\
+
+\begin{figure}[h] 
+	\centering
+	\includegraphics[width=0.5\columnwidth]{Figures/hdsd_5.png}
+\end{figure}
+
+4. Ấn dấu x trên bản đồ để chương trình chạy map hoặc thuật toán tiếp theo đến khi không còn gì để chạy.\\
+\newpage
+\begin{figure}[h] 
+	\centering
+	\includegraphics[width=0.5\columnwidth]{Figures/hssd_2.png}
+\end{figure}
+\section{Xây dựng cấu trúc chương trình} 
+\footnote{Ý tưởng trừu tượng hóa vấn đề được tham khảo ở khóa CS221 của đại học Stanford \cite{standfordcs221}}
 Mục tiêu của việc xây dựng cấu trúc chương trình là để việc cài đặt những thuật toán được tổng quát hóa, giúp cài đặt những bài toán khác nhau và giải chúng bằng nhiều thuật toán khác nhau trở nên đơn giản hơn. 
 
 Theo cách nói của những nhà phát triển phần mềm, mã nguồn có thể được tái sử dụng trong nhiều trường hợp khác nhau, giúp người lập trình có thể tập trung hơn vào phần tối ưu thuật toán mà không nghĩ ngợi nhiều về phần kỹ thuật, cài đặt.

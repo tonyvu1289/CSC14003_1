@@ -1,0 +1,14 @@
+1. Chạy chương trình : 
+    python main.py
+2. Lựa chọn phần muốn chạy : 
+    + 1. Thuật toán (chạy đủ 4 thuật toán) với bài toán không điểm thưởng
+    + 2. Thuật toán với bài toán có điểm thưởng
+3. Với mỗi map, chương trình sẽ hiển thị : quá trình mở rộng trạng thái, các bước thực
+hiện đường đi kết quả, tổng số điểm đã mở rộng, chi phí đường đi kết quả và trực quan
+hóa những điều đó lên trên một cửa sổ đồ họa.
+Người dùng muốn lưu lại có thể ấn nút lưu trên bản đồ.
+4. Ấn dấu x trên bản đồ để chương trình chạy map hoặc thuật toán tiếp theo đến khi
+không còn gì để chạy.
+
+Chi tiết trong phần báo cáo, file report.pdf
+
