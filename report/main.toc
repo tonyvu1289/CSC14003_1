@@ -8,19 +8,18 @@
 \contentsline {subsection}{\numberline {4.1}Hai class trừu tượng (Abstract Class)}{7}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Class PriorityQueue}{8}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Các class kế thừa Solution}{9}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}BreadFirstSearch}{9}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.1}BreadthFirstSearch}{9}{subsubsection.4.3.1}%
 \contentsline {subsubsection}{\numberline {4.3.2}DepthFirstSearch}{9}{subsubsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.3}A*}{9}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}BestFirstSearch}{9}{subsubsection.4.3.4}%
+\contentsline {subsubsection}{\numberline {4.3.4}GreedyBestFirstSearch}{9}{subsubsection.4.3.4}%
 \contentsline {subsection}{\numberline {4.4}Phân tích cấu trúc bài toán}{9}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Chi tiết cách phát sinh ô kế nhiệm và chi phí}{10}{subsection.4.5}%
 \contentsline {section}{\numberline {5}Cơ sở lý thuyết của tính tối ưu và đầy đủ}{10}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Tính đầy đủ}{10}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Tính tối ưu}{11}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}BFS và UCS}{11}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}DFS,BestFirstSearch}{11}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.4}DFS và BestFirstSearch}{11}{subsection.5.4}%
 \contentsline {subsection}{\numberline {5.5}A*}{11}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}}{12}{subsection.5.6}%
 \contentsline {section}{\numberline {6}Đánh giá thực nghiệm}{12}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Giao diện kết quả}{12}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Bản đồ không có điểm thưởng}{13}{subsection.6.2}%
